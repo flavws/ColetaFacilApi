@@ -1,11 +1,13 @@
 package br.com.coletafacil.ColetaFacilApi.service;
 
+import br.com.coletafacil.ColetaFacilApi.dto.UsuarioDto;
 import br.com.coletafacil.ColetaFacilApi.model.Usuario;
 import br.com.coletafacil.ColetaFacilApi.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -19,13 +21,13 @@ public class UsuarioService {
         return usuario;
     }
 
-    public List<UsuarioDTO> getUsuario(){
-        return usuarioRepository.findAll().stream().map(UsuarioDTO::new).collect(Collectors.toList());
+    public List<UsuarioDto> getUsuario(){
+        return usuarioRepository.findAll().stream().map(UsuarioDto::new).collect(Collectors.toList());
     }
 
-    public UsuarioDTO updateUsuario(Long id, UsuarioDTO usuarioDTO){
+    public UsuarioDto updateUsuario(Long id, UsuarioDto usuarioDTO){
         Optional<Usuario> usuario = usuarioDTO.atualizar(id, usuarioRepository);
-        return new UsuarioDTO(usuario.get());
+        return new UsuarioDto(usuario.get());
     }
 
     public ResponseEntity<?> deleteUsuario(Long id){

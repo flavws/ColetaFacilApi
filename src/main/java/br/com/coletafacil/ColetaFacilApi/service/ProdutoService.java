@@ -1,34 +1,41 @@
 package br.com.coletafacil.ColetaFacilApi.service;
 
+import br.com.coletafacil.ColetaFacilApi.dto.ParceiroDto;
+import br.com.coletafacil.ColetaFacilApi.dto.ProdutoDto;
 import br.com.coletafacil.ColetaFacilApi.model.Parceiro;
+import br.com.coletafacil.ColetaFacilApi.model.Produto;
 import br.com.coletafacil.ColetaFacilApi.repository.ParceiroRepository;
+import br.com.coletafacil.ColetaFacilApi.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class ProdutoService {
     @Autowired
-    ParceiroRepository parceirosRepository;
+    ProdutoRepository produtosRepository;
 
-    public Parceiro createParceiro(Parceiro parceiros){
-        parceiros = parceirosRepository.save(parceiros);
-        return parceiros;
+    public Produto createProduto(Produto produtos){
+        produtos = produtosRepository.save(produtos);
+
+        return produtos;
     }
 
-    public List<ParceirosDTO> getParceiro(){
-        return parceirosRepository.findAll().stream().map(ParceirosDTO::new).collect(Collectors.toList());
+    public List<ProdutoDto> getProduto(){
+        return produtosRepository.findAll().stream().map(ProdutoDto::new).collect(Collectors.toList());
     }
 
-    public ParceirosDTO updateParceiro(Long id, ParceirosDTO parceirosDTO){
-        Optional<Parceiros> parceiros = parceirosDTO.atualizar(id, parceirosRepository);
-        return new ParceirosDTO(parceiros.get());
+    public ProdutoDto updateProduto(Long id, ProdutoDto produtosDTO){
+        Optional<Produto> produtos = produtosDTO.atualizar(id, produtosRepository);
+        return new ProdutoDto(produtos.get());
     }
 
-    public ResponseEntity<?> deleteParceiro(Long id){
-        parceirosRepository.deleteById(id);
+    public ResponseEntity<?> deleteProduto(Long id){
+        produtosRepository.deleteById(id);
         return ResponseEntity.ok().build();
     }
 }

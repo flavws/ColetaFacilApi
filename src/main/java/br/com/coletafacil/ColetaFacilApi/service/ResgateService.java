@@ -1,11 +1,14 @@
 package br.com.coletafacil.ColetaFacilApi.service;
 
+import br.com.coletafacil.ColetaFacilApi.dto.ResgateDto;
 import br.com.coletafacil.ColetaFacilApi.model.Resgate;
 import br.com.coletafacil.ColetaFacilApi.repository.ResgateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -19,13 +22,13 @@ public class ResgateService {
         return resgates;
     }
 
-    public List<ResgatesDTO> getResgates(){
-        return resgatesRepository.findAll().stream().map(ResgatesDTO::new).collect(Collectors.toList());
+    public List<ResgateDto> getResgates(){
+        return resgatesRepository.findAll().stream().map(ResgateDto::new).collect(Collectors.toList());
     }
 
-    public ResgatesDTO updateResgate(Long id, ResgatesDTO resgatesDTO){
-        Optional<Resgates> resgates = resgatesDTO.atualizar(id, resgatesRepository);
-        return new ResgatesDTO(resgates.get());
+    public ResgateDto updateResgate(Long id, ResgateDto resgatesDTO){
+        Optional<Resgate> resgates = resgatesDTO.atualizar(id, resgatesRepository);
+        return new ResgateDto(resgates.get());
     }
 
     public ResponseEntity<?> deleteResgate(Long id){
