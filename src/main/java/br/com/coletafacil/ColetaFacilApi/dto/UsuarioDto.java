@@ -1,8 +1,6 @@
 package br.com.coletafacil.ColetaFacilApi.dto;
 
-import br.com.coletafacil.ColetaFacilApi.model.Coletor;
 import br.com.coletafacil.ColetaFacilApi.model.Usuario;
-import br.com.coletafacil.ColetaFacilApi.repository.ColetorRepository;
 import br.com.coletafacil.ColetaFacilApi.repository.UsuarioRepository;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,9 +25,11 @@ public class UsuarioDto {
 
     private String endereco;
 
-    private String cep;
+    private String bairro;
 
     private String contato;
+
+    private Integer nivel;
 
     public UsuarioDto(Usuario usuario){
         this.idUsuario = usuario.getIdUsuario();
@@ -37,8 +37,9 @@ public class UsuarioDto {
         this.nomeUsuario = usuario.getNomeUsuario();
         this.ptsAcumulados = usuario.getPtsAcumulados();
         this.endereco = usuario.getEndereco();
-        this.cep = usuario.getCep();
+        this.bairro = usuario.getBairro();
         this.contato = usuario.getContato();
+        this.nivel = usuario.getNivel();
     }
 
     public Optional<Usuario> atualizar(Long id, UsuarioRepository usuarioRepository) {
@@ -48,10 +49,11 @@ public class UsuarioDto {
         usuario.get().setIdUsuario(this.idUsuario);
         usuario.get().setCpf(this.cpf);
         usuario.get().setNomeUsuario(this.nomeUsuario);
-        usuario.get().setCep(this.cep);
+        usuario.get().setBairro(this.bairro);
         usuario.get().setContato(this.contato);
         usuario.get().setEndereco(this.endereco);
         usuario.get().setPtsAcumulados(this.ptsAcumulados);
+        usuario.get().setNivel(this.nivel);
 
         return usuario;
     }

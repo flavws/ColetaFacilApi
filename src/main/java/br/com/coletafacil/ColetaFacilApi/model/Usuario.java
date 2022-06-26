@@ -18,23 +18,21 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUsuario;
 
-    @NotNull
     private String cpf;
     // TODO: 06/06/2022 colocar campos obrigatórios
-    @NotNull
     private String nomeUsuario;
 
-    @NotNull
     private String email;
 
-    @NotNull
     private String senha;
 
     private Integer ptsAcumulados;
 
     private String endereco;
 
-    private String cep;
+    private String bairro;
 
     private String contato;
+
+    private Integer nivel;
 }

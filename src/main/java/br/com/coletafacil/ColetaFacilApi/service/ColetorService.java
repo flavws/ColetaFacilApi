@@ -6,6 +6,7 @@ import br.com.coletafacil.ColetaFacilApi.repository.ColetorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,4 +35,20 @@ public class ColetorService {
         Optional<Coletor> coletor = coletorDTO.atualizar(id, coletorRepository);
         return new ColetorDto(coletor.get());
     }
+
+    public Coletor registerColetor(Coletor coletor) {
+        return coletorRepository.save(coletor);
+    }
+
+    public String loginColetor(Coletor coletor) {
+        List<Coletor> coletores = coletorRepository.findAll();
+
+        for (Coletor c: coletores){
+            if (c.getEmailColetor().equals(coletor.getEmailColetor()) && c.getSenhaColetor().equals(coletor.getSenhaColetor())) {
+                return coletor.getNome();
+            }
+        }
+        return "FAILURE";
+    }
 }
+

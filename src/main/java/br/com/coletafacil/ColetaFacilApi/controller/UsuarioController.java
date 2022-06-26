@@ -20,7 +20,7 @@ public class UsuarioController {
     @Autowired
     UsuarioService usuarioService;
 
-    @PostMapping
+    @PostMapping("/register")
     public Usuario createUsuario(@RequestBody Usuario usuario){
         return usuarioService.createUsuario(usuario);
     }
@@ -38,6 +38,11 @@ public class UsuarioController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteUsuario(@PathVariable Long id){
         return ResponseEntity.ok(usuarioService.deleteUsuario(id));
+    }
+
+    @PostMapping("/login")
+    public Usuario registerUsuario(@RequestBody Usuario usuario){
+        return usuarioService.loginUsuario(usuario);
     }
 
 }

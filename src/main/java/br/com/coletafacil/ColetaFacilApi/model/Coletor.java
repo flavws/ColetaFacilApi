@@ -3,10 +3,7 @@ package br.com.coletafacil.ColetaFacilApi.model;
 import br.com.coletafacil.ColetaFacilApi.repository.ColetorRepository;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Optional;
 @Entity
 @Data
@@ -20,28 +17,38 @@ public class Coletor {
 
     private String nome;
 
-    private Integer pontos;
+    private String cidade;
 
     private String veiculo;
 
     private String endereco;
 
-    private String cep;
+    private Integer nivel;
 
     private String contato;
+
+    private String emailColetor;
+
+    private String senhaColetor;
+
+    @Column(name = "url_foto")
+    private String urlFoto;
 
     public Optional<Coletor> atualizar(Long id, ColetorRepository coletorRepository){
 
         Optional<Coletor> coletorEntity = coletorRepository.findById(id);
 
         coletorEntity.get().setIdColetor(this.idColetor);
-        coletorEntity.get().setCep(this.cep);
+        coletorEntity.get().setCidade(this.cidade);
         coletorEntity.get().setContato(this.contato);
         coletorEntity.get().setCpf(this.cpf);
         coletorEntity.get().setNome(this.nome);
-        coletorEntity.get().setPontos(this.pontos);
+        coletorEntity.get().setNivel(this.nivel);
         coletorEntity.get().setVeiculo(this.veiculo);
         coletorEntity.get().setEndereco(this.endereco);
+        coletorEntity.get().setEmailColetor(this.emailColetor);
+        coletorEntity.get().setSenhaColetor(this.senhaColetor);
+        coletorEntity.get().setUrlFoto(this.urlFoto);
 
         coletorRepository.save(coletorEntity.get());
 

@@ -19,12 +19,12 @@ public class ColetorController {
     @Autowired
     ColetorService coletorService;
 
-    @PostMapping
+    @PostMapping("/register")
     public Coletor createColetor (@RequestBody Coletor coletor){
         return coletorService.createColetor(coletor);
     }
 
-    @GetMapping
+    @GetMapping("/consume")
     public List<Coletor> getColetor(){
         return  coletorService.getColetor();
     }
@@ -37,5 +37,10 @@ public class ColetorController {
     @DeleteMapping("/{id}")
     public ResponseEntity deleteColetor(@PathVariable Long id){
         return ResponseEntity.ok(coletorService.deleteColetor(id));
+    }
+    
+    @PostMapping("/login")
+    public String registerColetor(@RequestBody Coletor coletor){
+        return coletorService.loginColetor(coletor);
     }
 }

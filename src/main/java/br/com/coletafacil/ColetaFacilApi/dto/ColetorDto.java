@@ -20,25 +20,35 @@ public class ColetorDto {
 
     private String nome;
 
-    private Integer pontos;
+    private String cidade;
 
     private String veiculo;
 
     private String endereco;
 
-    private String cep;
+    private Integer nivel;
 
     private String contato;
+
+    private String emailColetor;
+
+    private String senhaColetor;
+
+    private String urlFoto;
 
     public ColetorDto(Coletor coletor) {
         this.idColetor = coletor.getIdColetor();
         this.cpf = coletor.getCpf();
         this.nome = coletor.getNome();
-        this.pontos = coletor.getPontos();
+        this.cidade = coletor.getCidade();
         this.veiculo = coletor.getVeiculo();
         this.endereco = coletor.getEndereco();
-        this.cep = coletor.getCep();
+        this.nivel = coletor.getNivel();
         this.contato = coletor.getContato();
+        this.senhaColetor = coletor.getSenhaColetor();
+        this.emailColetor = coletor.getEmailColetor();
+        this.urlFoto = coletor.getUrlFoto();
+
     }
 
     public Optional<Coletor> atualizar(Long id, ColetorRepository coletorRepository){
@@ -46,13 +56,16 @@ public class ColetorDto {
         Optional<Coletor> coletorEntity = coletorRepository.findById(id);
 
         coletorEntity.get().setIdColetor(this.idColetor);
-        coletorEntity.get().setCep(this.cep);
+        coletorEntity.get().setCidade(this.cidade);
         coletorEntity.get().setContato(this.contato);
         coletorEntity.get().setCpf(this.cpf);
         coletorEntity.get().setNome(this.nome);
-        coletorEntity.get().setPontos(this.pontos);
+        coletorEntity.get().setNivel(this.nivel);
         coletorEntity.get().setVeiculo(this.veiculo);
         coletorEntity.get().setEndereco(this.endereco);
+        coletorEntity.get().setEmailColetor(this.emailColetor);
+        coletorEntity.get().setSenhaColetor(this.senhaColetor);
+        coletorEntity.get().setUrlFoto(this.urlFoto);
 
         coletorRepository.save(coletorEntity.get());
 
