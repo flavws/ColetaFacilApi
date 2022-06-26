@@ -30,14 +30,14 @@ public class UsuarioController {
         return  usuarioService.getUsuario();
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<UsuarioDto> updateUsuario(@PathVariable Long id, @RequestBody UsuarioDto usuarioDTO){
-        return ResponseEntity.ok(usuarioService.updateUsuario(id, usuarioDTO));
+    @PutMapping("/update/{id}")
+    public UsuarioDto updateUsuario(@PathVariable Long id, @RequestBody UsuarioDto usuarioDTO){
+        return usuarioService.updateUsuario(id, usuarioDTO);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteUsuario(@PathVariable Long id){
-        return ResponseEntity.ok(usuarioService.deleteUsuario(id));
+    @DeleteMapping("/delete/{id}")
+    public void deleteUsuario(@PathVariable Long id){
+        usuarioService.deleteUsuario(id);
     }
 
     @PostMapping("/login")

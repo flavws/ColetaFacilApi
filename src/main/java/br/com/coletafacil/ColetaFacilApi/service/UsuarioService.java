@@ -31,9 +31,8 @@ public class UsuarioService {
         return new UsuarioDto(usuario.get());
     }
 
-    public ResponseEntity<?> deleteUsuario(Long id){
+    public void deleteUsuario(Long id){
         usuarioRepository.deleteById(id);
-        return ResponseEntity.ok().build();
     }
 
     public Usuario loginUsuario(Usuario usuario) {
