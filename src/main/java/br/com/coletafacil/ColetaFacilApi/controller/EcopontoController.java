@@ -19,13 +19,13 @@ public class EcopontoController {
     @Autowired
     private EcopontoService ecopontoService;
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity createEcoponto (@RequestBody Ecoponto ecoponto){
         ecopontoService.createEcoponto(ecoponto);
         return ResponseEntity.ok().build();
         }
 
-    @GetMapping
+    @GetMapping("/consume")
     public List<Ecoponto> getEcoponto(){
         return ecopontoService.getEcoponto();
     }
