@@ -25,7 +25,7 @@ public class UsuarioController {
         return usuarioService.createUsuario(usuario);
     }
 
-    @GetMapping
+    @GetMapping("/consume")
     public List<UsuarioDto> getUsuario(){
         return  usuarioService.getUsuario();
     }
