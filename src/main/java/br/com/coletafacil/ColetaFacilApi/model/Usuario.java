@@ -35,4 +35,5 @@ public class Usuario {
     private String contato;
 
     private Integer nivel;
+
 }

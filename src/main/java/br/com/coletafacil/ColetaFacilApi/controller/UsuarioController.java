@@ -49,7 +49,7 @@ public class UsuarioController {
     public List<Usuario> getUsuarioById(@PathVariable("id") Long id){
 
         if(id == null) {
-            return usuarioService.getUsuario();
+            return usuarioRepository.findAll();
         }
         return usuarioService.getUsuarioById(id);
     }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -48,6 +49,6 @@ public class UsuarioService {
     
     public List<Usuario> getUsuarioById(Long id){
         Optional<Usuario> usuario = usuarioRepository.findById(id);
-        return usuario;
+        return Collections.singletonList(usuario.get());
     }
 }
