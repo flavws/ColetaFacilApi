@@ -45,4 +45,12 @@ public class UsuarioController {
         return usuarioService.loginUsuario(usuario);
     }
 
+    @GetMapping("/consume/{id}")
+    public List<Usuario> getUsuarioById(@PathVariable("id") Long id){
+
+        if(id == null) {
+            return usuarioService.getUsuario();
+        }
+        return usuarioService.getUsuarioById(id);
+    }
 }
