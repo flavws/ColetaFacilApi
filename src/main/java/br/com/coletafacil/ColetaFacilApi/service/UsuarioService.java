@@ -45,4 +45,9 @@ public class UsuarioService {
         }
         return usuario;
     }
+    
+    public List<Usuario> getUsuarioById(Long id){
+        Optional<Usuario> usuario = usuarioRepository.findById(id);
+        return usuario;
+    }
 }
