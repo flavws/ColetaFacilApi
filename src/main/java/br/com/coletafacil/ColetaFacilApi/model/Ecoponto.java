@@ -26,5 +26,5 @@ public class Ecoponto {
 
     private String cidade;
 
-    private String UF;
+    private String uf;
 }
